@@ -4,7 +4,7 @@
   "description": "Interactive 3D architectural model and GLB export of the modern living, dining, pooja, balcony, and kitchen space",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
+    "start": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "export": "node scripts/export-glb.mjs"
   },
