@@ -1,0 +1,13 @@
+{
+  "name": "first-3d-room",
+  "version": "1.0.0",
+  "description": "Interactive 3D architectural model and GLB export of the modern living, dining, pooja, balcony, and kitchen space",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "export": "node scripts/export-glb.mjs"
+  },
+  "dependencies": {
+    "three": "^0.183.2"
+  }
+}

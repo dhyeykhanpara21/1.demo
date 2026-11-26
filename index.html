@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Room Model — Living, Dining, Pooja &amp; Kitchen</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #141619; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #f1f3f5; }
+    #viewport { width: 100%; height: 100%; display: block; }
+
+    .hud-top {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: none;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .panel {
+      pointer-events: auto;
+      background: rgba(18, 20, 24, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .title-card h1 { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; }
+    .title-card p { font-size: 11px; color: #adb5bd; margin-top: 2px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      max-width: 680px;
+      justify-content: flex-end;
+    }
+
+    .hud-bottom {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      z-index: 10;
+      max-width: 95vw;
+      justify-content: center;
+    }
+
+    button {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.07);
+      color: #f1f3f5;
+      border-radius: 8px;
+      padding: 6px 11px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    button:hover { background: rgba(255, 255, 255, 0.16); border-color: rgba(255, 255, 255, 0.3); }
+    button.active { background: #d49b4b; color: #161412; border-color: #e6b873; font-weight: 600; }
+    button.primary { background: #2d7ff9; border-color: #4f96ff; color: #fff; }
+    button.primary:hover { background: #4690ff; }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/node_modules/three/build/three.module.js",
+        "three/addons/": "/node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="viewport"></canvas>
+
+  <div class="hud-top">
+    <div class="panel title-card">
+      <h1>Modern Apartment 3D Model</h1>
+      <p id="modeHint">Drag to orbit · Scroll to zoom · Right-drag to pan</p>
+    </div>
+    <div class="panel actions">
+      <button id="btnFan" class="active">Fan: On</button>
+      <button id="btnCeiling" class="active">Ceiling: Shown</button>
+      <button id="btnDoors">Doors: Closed</button>
+      <button id="btnWalk">Walk Mode (WASD)</button>
+      <button id="btnExport" class="primary">Download .GLB</button>
+    </div>
+  </div>
+
+  <div class="panel hud-bottom" id="cameraBar">
+    <button data-preset="living" class="active">1. Living &amp; Pooja</button>
+    <button data-preset="dining">2. Dining &amp; Balcony</button>
+    <button data-preset="kitchenEast">3. Kitchen Appliances</button>
+    <button data-preset="kitchenWest">4. Hob &amp; Living</button>
+    <button data-preset="panorama">5. Center Overview</button>
+    <button data-preset="dollhouse">6. Dollhouse Cutaway</button>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
