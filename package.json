@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
+    "build": "node scripts/build.mjs",
     "export": "node scripts/export-glb.mjs"
   },
   "dependencies": {
